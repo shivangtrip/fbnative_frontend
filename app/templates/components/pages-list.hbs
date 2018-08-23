@@ -1,0 +1,62 @@
+<div class="list-pages">
+    {{#if facebookConnected}}
+    {{!-- {{#each pageData as |page|}}
+            {{page.name}}
+    {{/each}} --}}
+    
+    <div class="inner-list-pages">
+        <table>
+            <tr>
+                <th>Page Name</th>
+                <th class="pg-grp">Group</th>
+                <th class="pg-add-rm">Actions</th>
+            </tr>
+            {{#each pageData as |page|}}
+                <tr>
+                    <td>{{page.name}}</td>
+                    <td class="pg-grp">
+                    <select class="grp-select" {{action "selectGroupForChannel" }}>
+                        <option value=""
+                                    hidden
+                            >Choose Group</option>
+                        <option value="volvo">Group A</option>
+                        <option value="saab">Group B</option>
+                        <option value="opel">Group C</option>
+                        <option value="audi">Group D</option>
+                    </select>
+                    </td>
+                    {{#if page.isSubscribed}}
+                    <td class="pg-add-rm"><a {{action "unsubscribePage" page.id page.access_token}} style="color:red; cursor:pointer">Remove Page</a></td>
+                    {{else}}
+                    <td class="pg-add-rm"><a {{action "subscribePage" page.id page.access_token}} style="color:blue; cursor:pointer">Add Page</a></td>
+                    {{/if}}
+                </tr>
+            {{/each}}
+            
+            <tr>
+                <td>Marketing</td>
+                <td class="pg-grp">
+                    <select class="grp-select">
+                        <option value="volvo">Group A</option>
+                        <option value="saab">Group B</option>
+                        <option value="opel">Group C</option>
+                        <option value="audi">Group D</option>
+                    </select>
+                </td>
+                <td class="pg-add-rm"><a href="" style="color:red">Remove Page</a></td>
+            </tr>
+        </table>
+    </div>
+        
+    {{else}}
+    <div style="display:none" id="status"></div>
+    <div class="loader"></div>
+        
+    {{!-- <button {{action "linkAccount" }} class="connect-btn">Connect To Facebook</button> --}}
+        
+
+<div class="fb-login-button connect-btn-2" data-scope="public_profile,email,manage_pages,pages_messaging" data-onlogin="checkLoginState(); initSpinner();" data-width="300" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+    {{/if}}
+    
+
+</div>

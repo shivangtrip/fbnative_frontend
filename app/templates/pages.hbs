@@ -1,0 +1,21 @@
+<div id="status-header">
+    <div id="status-header-inner">
+        <div>
+            <img class="facebook-icon-holder" src="assets/facebook-icon.png" >
+            <span style="font-size: 25px">&nbsp;Facebook</span>
+            <span class="sync-discon">
+                <button class="sync-fb-btn"><img class="sync-icon" src="assets/sync-icon.png" ></button>
+                <button {{action "disconnectFb" }} class="delete-fb-btn"><img class="delete-icon" src="assets/delete-icon.png"></button>
+                
+            </span>
+        </div>
+        <br>
+        <div class="subtext">
+            Reply to facebook messages right from your inbox.
+        </div>
+        
+        
+    </div>
+
+</div>
+{{pages-list facebookConnected=true pageData=model}}

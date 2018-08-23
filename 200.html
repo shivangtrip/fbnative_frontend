@@ -7,18 +7,19 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{content-for "head"}}
+    
+<meta name="freshbook/config/environment" content="%7B%22modulePrefix%22%3A%22freshbook%22%2C%22environment%22%3A%22development%22%2C%22rootURL%22%3A%22/%22%2C%22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%22name%22%3A%22freshbook%22%2C%22version%22%3A%220.0.0+dd1bc9cc%22%7D%2C%22exportApplicationGlobal%22%3Atrue%7D" />
 
-    <link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
-    <link rel="stylesheet" href="{{rootURL}}assets/freshbook.css">
+    <link rel="stylesheet" href="/assets/vendor.css">
+    <link rel="stylesheet" href="/assets/freshbook.css">
 
-    {{content-for "head-footer"}}
+    
   </head>
   <body>
-    {{content-for "body"}}
+    
 
-    <script src="{{rootURL}}assets/vendor.js"></script>
-    <script src="{{rootURL}}assets/freshbook.js"></script>
+    <script src="/assets/vendor.js"></script>
+    <script src="/assets/freshbook.js"></script>
 
 <script>
 
@@ -69,17 +70,17 @@ function statusChangeCallback(response) {
                 console.log('statusChangeCallback');
                 console.log(response);
                 var arr = response;
-
                 $.ajax({
-      type: "POST",
-      url: "http://localhost:8080/app/facebookhookConnection",
-      data: JSON.stringify(response),
-      dataType: "json",
-      success: function(resultData){
-          alert("Save Complete");
-      }
+    url: 'http://localhost:8080/app/facebookhookConnection',
+    type: 'POST',
+    data: JSON.stringify(arr),
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    async: false,
+    success: function(msg) {
+        alert(msg);
+    }
 });
-                
                 // The response object is returned with a status field that lets the
                 // app know the current login status of the person.
                 // Full docs on the response object can be found in the documentation
@@ -111,6 +112,7 @@ function statusChangeCallback(response) {
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-    {{content-for "body-footer"}}
+    <div id="ember-bootstrap-wormhole"></div>
+<div id="ember-basic-dropdown-wormhole"></div>
   </body>
 </html>
